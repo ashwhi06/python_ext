@@ -66,7 +66,7 @@ def pascal(n):
         #first number is 1
         if i == 0:
           row.append(1)
-        #intermediate nunmbers get added from previous rows
+        #intermediate numbers get added from previous rows
         elif i > 0 and i < length-1:
           row.append(triangle[row_number-1][i-1]+triangle[row_number-1][i])
         #last number is 1
@@ -79,5 +79,16 @@ def pascal(n):
     for row in triangle:
       print(row)
 
-pascal(2)
-pascal(5)
+print(pascal(8))
+
+#Alternative
+# def pascal(n):
+#     triangle = []
+#     for i in range(n):
+#         row = [1]
+#         if i > 0:
+#             prev_row = triangle[i - 1]
+#             row.extend([prev_row[j] + prev_row[j + 1] for j in range(len(prev_row) - 1)])
+#             row.append(1)
+#         triangle.append(row)
+#         print(" " * (n - i - 1) + " ".join(map(str, row)))
