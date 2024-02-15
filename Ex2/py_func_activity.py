@@ -47,7 +47,9 @@ print(recursive_factorial(5))
 #         return ""
 #     elif len(s) == 1:
 #         return s
+##      Compares the characters in the string | checking the length of s
 #     elif s[0] == s[1]:
+##     use slice notation to start at 2
 #         return recursive_deduplicate(s[1:])
 #     else:
 #         return s[0] + recursive_deduplicate(s[1:])
@@ -68,19 +70,15 @@ def recursive_deduplicate(my_str,i=0):
       return recursive_deduplicate(my_str,i+1)
       
 print(recursive_deduplicate("aaaa"))
-print(recursive_deduplicate("abab"))
-print(recursive_deduplicate("apple"))
+print(recursive_deduplicate("aaba"))
+print(recursive_deduplicate("AABBCCDD"))
 print(recursive_deduplicate(""))
 # recursive_reverse - Uses recursion to reverse a string.
 def recursive_reverse(s):
-     #empty string case
-    if len(s) == 0:
-        return ""
     #base case
-    elif len(s) == 1:
-        return s[0]
+    if len(s) <= 1:
+        return s
      #recursive case
-    else:
-        return s[-1] + recursive_reverse(s[:-1])
+    return s[-1] + recursive_reverse(s[:-1])
     
 print(recursive_reverse("apple"))
