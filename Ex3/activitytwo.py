@@ -20,7 +20,7 @@ class Customer(Person):
         if self.age >= 12:
             print(f"{self.name} has bought a child ticket.")
         else: 
-            print(f"{self.name} has bought a adult ticket.")
+            print(f"{self.name} has bought an adult ticket.")
             self.has_ticket = True
             
     def enter_zoo(self,zoo):
@@ -28,7 +28,7 @@ class Customer(Person):
             self.in_zoo = True
             self.has_ticket = False
             zoo.add_customer(self.name)
-            print(f"{self.name} has entered {zoo.name}")
+            print(f"{self.name} has re-entered the {zoo.name}")
         else:
             print(f"{self.name} does not have a ticket to enter Zoo.")
             
@@ -36,7 +36,7 @@ class Customer(Person):
         if self.in_zoo:
             self.in_zoo = False
             zoo.remove_customer(self.name)
-            print(f"{self.name} has left {zoo.name}")
+            print(f"{self.name} is leaving {zoo.name}")
         else:
             print(f"{self.name} is not in {zoo.name}")
 class Zoo:
@@ -108,7 +108,7 @@ class Chimp(Animal):
         super().__init__(name)
         
     def make_noise(self):
-        print(f"{self.name} makes weird noises.")
+        print(f"{self.name} says ooh ooh ahh ahh.")
         
     def eat_food(self):
         print(f"{self.name} eats leaves and fruit.")
@@ -117,9 +117,9 @@ class Chimp(Animal):
 nycZoo = Zoo("NYC Zoo")
 
 
-salmon = Fish("salmon")
-robin = Bird("robin")
-bonobo = Chimp("bonobo")
+salmon = Fish("Salmon")
+robin = Bird("Robin")
+bonobo = Chimp("Bonobo")
 nycZoo.add_animals([salmon, robin, bonobo])
 
 # Now, let's create some customers and add them to the zoo.
