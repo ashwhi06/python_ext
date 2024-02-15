@@ -6,6 +6,39 @@ class Person:
     def get_name(self):
         return self.name
 
+# Next, let's try defining a class to represent a customer. 
+# A customer is a person, so the Customer class inherits from the Person class, and should call the Person constructor inside the Customer constructor. 
+# In addition to their name and age, a customer should have two Booleans, one each for whether they have a ticket for the zoo, and whether they are currently in the zoo. 
+# Initialize these Booleans to false in the constructor for your Customer class.
+class Customer(Person):
+    def __init__(self,in_name,in_age):
+        super().__init__(in_name,in_age)
+        self.has_ticket = False
+        self.in_zoo = False
+        
+    def buy_ticket(self):
+        if self.age >= 12:
+            print(f"{self.name} has bought a child ticket.")
+        else: 
+            print(f"{self.name} has bought a adult ticket.")
+            self.has_ticket = True
+            
+    def enter_zoo(self,zoo):
+        if self.has_ticket:
+            self.in_zoo = True
+            self.has_ticket = False
+            zoo.add_customer(self.name)
+            print(f"{self.name} has entered {zoo.name}")
+        else:
+            print(f"{self.name} does not have a ticket to enter Zoo.")
+            
+    def exit_zoo(self,zoo):
+        if self.in_zoo:
+            self.in_zoo = False
+            zoo.remove_customer(self.name)
+            print(f"{self.name} has left {zoo.name}")
+        else:
+            print(f"{self.name} is not in {zoo.name}")
 class Zoo:
     def __init__(self,name="Local Zoo"):
         self.name = name
@@ -39,12 +72,12 @@ class Animal:
         self.name = name
     def get_name(self):
         return self.name
+    
     def make_noise(self):
         print("Every animal makes noise")
+        
     def eat_food(self):
         print("All creatures need sustenance")
-
-nycZoo = Zoo("NYC Zoo")
 
 #     Now that your Customer class is complete, let's create some animal classes. 
 # Each subclass should call the Animal constructor in its own constructor and should override the make_noise and eat_food methods to print appropriate messages.
@@ -53,63 +86,41 @@ nycZoo = Zoo("NYC Zoo")
 class Fish(Animal):
     def __init__(self,name):
         super().__init__(name)
+        
     def make_noise(self):
-        print("A fish makes a sound")
+        print(f"{self.name} blows bubbles.")
+        
     def eat_food(self):
-        print("A fish eats food")
+        print(f"{self.name} eats food.")
 
 class Bird(Animal):
     def __init__(self,name):
         super().__init__(name)
+        
     def make_noise(self):
-        print("A bird makes a sound")
+         print(f"{self.name} tweets loudly!")
+         
     def eat_food(self):
-        print("A bird eats food")
+        print(f"{self.name} eats nuts and berries!")
 
 class Chimp(Animal):
     def __init__(self,name):
         super().__init__(name)
+        
     def make_noise(self):
-        print("A chimp makes a sound")
+        print(f"{self.name} makes weird noises.")
+        
     def eat_food(self):
-        print("A chimp eats food")
+        print(f"{self.name} eats leaves and fruit.")
+
+
+nycZoo = Zoo("NYC Zoo")
+
 
 salmon = Fish("salmon")
 robin = Bird("robin")
 bonobo = Chimp("bonobo")
 nycZoo.add_animals([salmon, robin, bonobo])
-
-# Next, let's try defining a class to represent a customer. 
-# A customer is a person, so the Customer class inherits from the Person class, and should call the Person constructor inside the Customer constructor. 
-# In addition to their name and age, a customer should have two Booleans, one each for whether they have a ticket for the zoo, and whether they are currently in the zoo. 
-# Initialize these Booleans to false in the constructor for your Customer class.
-class Customer(Person):
-    def __init__(self,in_name,in_age):
-        super().__init__(in_name,in_age)
-        self.has_ticket = False
-        self.in_zoo = False
-    def buy_ticket(self):
-        self.has_ticket = True
-        print(f"{self.name} has bought a ticket")
-    def enter_zoo(self,zoo):
-        if self.has_ticket:
-            self.in_zoo = True
-            zoo.add_customer(self.name)
-            print(f"{self.name} has entered {zoo.name}")
-        else:
-            print(f"{self.name} does not have a ticket")
-    def exit_zoo(self,zoo):
-        if self.in_zoo:
-            self.in_zoo = False
-            zoo.remove_customer(self.name)
-            print(f"{self.name} has left {zoo.name}")
-        else:
-            print(f"{self.name} is not in {zoo.name}")
-    def __str__(self):
-        return f"{self.name} is {self.age} years old and has a ticket: {self.has_ticket} and is in the zoo: {self.in_zoo}"
-
-    
-
 
 # Now, let's create some customers and add them to the zoo.
 alice = Customer("Alice",25)
