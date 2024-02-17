@@ -11,20 +11,20 @@ original_list= [3,6,9,2]
     # result = [x**3 for x in original_list]
     #This lambda function lambda x: x ** 3 takes each element x from the original list and cubes it.
     #The map function applies this lambda function to each element of the original list, producing a new list containing the cubed elements.
-result = list(map(lambda x: x**3, original_list))
+result = list(map(lambda num: num**3, original_list))
 
 print(f"List after lambda function:",result)
 # 3. Write a lambda function to determine whether a number is even or odd (the function should return True or False), and then use the function and a list comprehension to create a new list of booleans, where even numbers are True and odd numbers are False.
 #Input list: [3,6,9,2] List after lambda function and list comprehension: [False, True, False, True]
 input_list= [3,6,9,2]
     #determine whether a number is even or odd
-is_even = lambda x: x % 2 == 0 #lambda function checks if a number is divisible by 2, if yes, it is even, if not, it is odd
+is_even = lambda input: input % 2 == 0 #lambda function checks if a number is divisible by 2, if yes, it is even, if not, it is odd
     #list comprehension to create a new list of booleans, where even numbers are True and odd numbers are False
-result = [is_even(x) for x in input_list]
+result = [is_even(input) for input in input_list]
 print(f"List after lambda function and list comprehension:",result)
 
 # 4. Use a list comprehension to create a list of the numbers from 1 to 100 (including 100).
-range_list = [x for x in range(1,101)]
+range_list = [item for item in range(1,101)]
 print(f"List of numbers from 1 to 100:",range_list)
 
 
