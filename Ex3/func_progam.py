@@ -3,10 +3,15 @@
 # Hint: You can assume that all dictionary keys will be of type string, and that nested dictionaries will only be nested one layer deep (a dictionary of dictionaries will not have another dictionary nested inside it).
 def flatten_dict(d):
     result = dict()
+    #loop through input
     for key, value in d.items():
+        #check if each value is a dictionary
         if isinstance(value, dict):
+            #if it is, call the function again with the value as the argument
             for subkey, subvalue in flatten_dict(value).items():
+                #add the key and subkey to the result dictionary
                 result[key + "." + subkey] = subvalue
+            #else, add the key and value to the result dictionary
         else:
             result[key] = value
     return result
