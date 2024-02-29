@@ -24,7 +24,22 @@
 # k = 3
 # print("Minimal possible sum of its",k, "consecutive elements:", solution(A, k))
 
-                  
+#Solution #3
+def solution(input_Arr, k):
+    sum = input_Arr[0]
+    for i in range(1, k):
+        sum += input_Arr[1]
+    max_sum = sum
+    for i in range(k, len(input_Arr)):
+        if i + k > len(input_Arr):
+            break
+        else:
+            sum = sum - input_Arr[i - k] + input_Arr[i]
+            max_sum = max(max_sum, sum)
+    return max_sum
+
+print(solution([1, 3, 1, 2, 4, 3, 4], 2))
+               
             
             
             
