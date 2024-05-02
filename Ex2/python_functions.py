@@ -81,7 +81,7 @@ def pascal(n):
 
 print(pascal(8))
 
-#Alternative
+# #Alternative
 # def pascal(n):
 #     triangle = []
 #     for i in range(n):
@@ -92,3 +92,34 @@ print(pascal(8))
 #             row.append(1)
 #         triangle.append(row)
 #         print(" " * (n - i - 1) + " ".join(map(str, row)))
+
+
+# Write a Python function called num_within() to multiple all numbers in a list. lst needs to be a list.
+def mult_list(lst):
+  #base case
+  if len(lst) == 0: 
+    return 1
+  #product starts with first element of list
+  else:
+    return lst[0] * mult_list(lst[1:]) #recursive case
+  
+print(mult_list([1,2,3]))
+
+
+
+# Write a Python function called num_within() to multiple all numbers in a list. lst needs to be a list.
+def mult_list(lst):
+
+  #isolate the first element
+  first_element = lst[0]
+  
+  if len(lst) == 1:
+    for i in lst[1:]:
+      first_element = first_element * i
+    return first_element
+  else:
+    for i in lst[1:]:
+      first_element = first_element * i
+    return first_element * mult_list(lst[1:])
+  
+print(mult_list([1,2,3]))
