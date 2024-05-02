@@ -1,18 +1,18 @@
 class Person:
-    def __init__(self,in_name,in_age):
+    def __init__(self,in_name,in_age): #in_name and in_age are the parameters
         self.name = in_name
         self.age = in_age
       
-    def get_name(self):
+    def get_name(self): #get_name is the method
         return self.name
 
 # Next, let's try defining a class to represent a customer. 
 # A customer is a person, so the Customer class inherits from the Person class, and should call the Person constructor inside the Customer constructor. 
 # In addition to their name and age, a customer should have two Booleans, one each for whether they have a ticket for the zoo, and whether they are currently in the zoo. 
 # Initialize these Booleans to false in the constructor for your Customer class.
-class Customer(Person):
-    def __init__(self,in_name,in_age):
-        super().__init__(in_name,in_age)
+class Customer(Person): #Customer inherits from Person
+    def __init__(self,in_name,in_age): #in_name and in_age are the parameters
+        super().__init__(in_name,in_age) #super() is the method that calls the constructor of the parent class
         self.has_ticket = False
         self.in_zoo = False
         
@@ -23,7 +23,7 @@ class Customer(Person):
             print(f"{self.name} has bought an adult ticket.")
             self.has_ticket = True
             
-    def enter_zoo(self,zoo):
+    def enter_zoo(self,zoo): 
         if self.has_ticket:
             self.in_zoo = True
             self.has_ticket = False
