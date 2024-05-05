@@ -16,7 +16,7 @@ class Customer(Person): #Customer inherits from Person
         self.has_ticket = False
         self.in_zoo = False
         
-    def buy_ticket(self):
+    def buy_ticket(self): 
         if self.age >= 12:
             print(f"{self.name} has bought a child ticket.")
         else: 
@@ -27,26 +27,26 @@ class Customer(Person): #Customer inherits from Person
         if self.has_ticket:
             self.in_zoo = True
             self.has_ticket = False
-            zoo.add_customer(self.name)
+            zoo.add_customer(self.name) 
             print(f"{self.name} has re-entered the {zoo.name}")
         else:
             print(f"{self.name} does not have a ticket to enter Zoo.")
             
-    def exit_zoo(self,zoo):
+    def exit_zoo(self,zoo): #zoo is the parameter
         if self.in_zoo:
             self.in_zoo = False
-            zoo.remove_customer(self.name)
+            zoo.remove_customer(self.name) #remove_customer is the method
             print(f"{self.name} is leaving {zoo.name}")
         else:
             print(f"{self.name} is not in {zoo.name}")
 class Zoo:
-    def __init__(self,name="Local Zoo"):
+    def __init__(self,name="Local Zoo"): #name is the parameter
         self.name = name
         self.animals = []
         self.customers = []
 
-    def add_animal(self, animal):
-        self.animals.append(animal)
+    def add_animal(self, animal): #animal is the parameter
+        self.animals.append(animal) #append is the method
         print(f"{self.name} has a(n) {animal}")
   
     def add_animals(self, animals):
@@ -61,8 +61,8 @@ class Zoo:
         self.customers.remove(name)
         print(f"{name} has left {self.name}")
     
-    def visit_animals(self):
-        for a in self.animals:
+    def visit_animals(self): #
+        for a in self.animals: 
             print(f"visiting {a.get_name()}")
             a.make_noise()
             a.eat_food()
@@ -104,7 +104,7 @@ class Bird(Animal):
         print(f"{self.name} eats nuts and berries!")
 
 class Chimp(Animal):
-    def __init__(self,name):
+    def __init__(self,name): 
         super().__init__(name)
         
     def make_noise(self):
